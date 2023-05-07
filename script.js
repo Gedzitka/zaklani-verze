@@ -4,9 +4,10 @@ import {Client} from './client.js';
 
 export class ClientsEvidation{
     constructor (){
-            this.form=document.getElementById('form');
-            this._setingEvents();
-        }
+        this.form=document.getElementById('form');
+        this._setingEvents();
+        this.clientData = [];
+    }
         _setingEvents(){
            
             this.form.addEventListener('submit', (e)=> {
