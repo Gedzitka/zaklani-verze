@@ -1,12 +1,10 @@
 import { Client } from "./client.js";
-
 export class ClientsEvidation {
   constructor() {
     this.form = document.getElementById("form");
     this._settingEvents();
     this.clientData = [];
   }
-
   _settingEvents() {
     this.form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -16,7 +14,7 @@ export class ClientsEvidation {
       const age = this.form.age.value;
       const phone = this.form.phone.value;
 
-      if (firstName && lastName && age && phone) {
+      if (firstName && lastName && age && phone ) {
         const client = new Client(firstName, lastName, age, phone);
         const dataFromStorage = localStorage.getItem("clientData");
         this.clientData = dataFromStorage ? JSON.parse(dataFromStorage) : [];
@@ -28,12 +26,15 @@ export class ClientsEvidation {
         alert("Prosím vyplňte všechny údaje");
       }
     });
-  }
+    }
+ 
 
   printClient() {
+ 
     const tableSection = document.getElementById("section_table");
     console.log(tableSection);
     let table = ` <table class=" w-100 table-sm  table-response table table-hover table-bordered" id="table">
+    <h4 class="mt-5 mb-5">Pojištěnci</h4>
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Jméno a příjmení</th>
@@ -52,6 +53,7 @@ export class ClientsEvidation {
     table += `</tbody>
                 </table>`;
     tableSection.innerHTML = table;
+    
   }
 
   saveClient() {
